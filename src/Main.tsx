@@ -6,7 +6,12 @@ const Main = () => {
   const [hashOuput, setHashOutput] = useState(null);
 
   const calculateHash = () => {
-    const splicedInput = hashInput.split(',');
+    const splicedInput = hashInput
+      .split(',')
+      .filter((str: string) => str.length > 0)
+      .map((str: string) => Number(str));
+
+    console.log(splicedInput);
 
     // Add error detection
     const res: any = mimc(...splicedInput);
